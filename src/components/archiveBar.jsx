@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaUser, FaEnvelope, FaCog } from "react-icons/fa";
-import "../css/Archive.css";
+import "../css/archive.css";
 import { updateCall, resetCalls } from "../apis/calllog.js";
 
 const Archive = ({ finalCallLogs, archiveFlag }) => {

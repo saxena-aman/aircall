@@ -4,7 +4,7 @@ import { FcVoicemail } from "react-icons/fc";
 import { FcMissedCall } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { FcCallback } from "react-icons/fc";
-import "../css/callLog.css";
+import "../css/calllog.css";
 const formatTime = (timestamp) => {
   return new Date(timestamp).toLocaleString(undefined, {
     hour: "2-digit",

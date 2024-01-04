@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Archive from "./archiveBar.jsx";
 import Call from "./call.jsx";
-import "../css/callLog.css";
+import "../css/calllog.css";
 import { getCallLogs } from "../apis/calllog.js";
 const Breaker = ({ date }) => {
   return <div className="divider">{date}</div>;
