@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Archive from "../components/archiveBar.jsx";
 import Call from "../components/call.jsx";
+import Blank from "../pages/blank.jsx";
 import "../css/calllog.css";
 import { getCallLogs } from "../apis/calllog.js";
 const Breaker = ({ date }) => {
@@ -15,22 +16,16 @@ const CallsDetails = () => {
       .then((callLogs) => setCalls(callLogs))
       .catch((error) => console.error("Error fetching user:", error));
   }, []);
-  const finalCallLogs = calls;
-  for (let i = 0; i < finalCallLogs.length; i++) {
-    finalCallLogs[i].count = i;
-  }
   let currentDate = null;
-  return (
+  return calls.length ? (
     <div className="log-container">
-      <Archive finalCallLogs={finalCallLogs} archiveFlag={true} />
+      <Archive finalCallLogs={calls} archiveFlag={true} />
       <div>
-        {finalCallLogs.map((call, index) => {
+        {calls.map((call, index) => {
           const callDate = new Date(call.created_at).toLocaleDateString(
             "en-GB"
           );
-          // Add a check for is_archived property
           if (call.is_archived) {
-            // Skip rendering if is_archived is true
             return null;
           }
           if (index === 0 || callDate !== currentDate) {
@@ -47,6 +42,8 @@ const CallsDetails = () => {
         })}
       </div>
     </div>
+  ) : (
+    <Blank />
   );
 };
 

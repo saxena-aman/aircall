@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Archive from "./archiveBar.jsx";
 import Call from "./call.jsx";
+import Blank from "../pages/blank.jsx";
 import "../css/calllog.css";
 import { getCallLogs } from "../apis/calllog.js";
 const Breaker = ({ date }) => {
@@ -20,7 +21,7 @@ const CallsDetails = () => {
     finalCallLogs[i].count = i;
   }
   let currentDate = null;
-  return (
+  return calls.length ? (
     <div className="log-container">
       <Archive finalCallLogs={finalCallLogs} archiveFlag={false} />
       <div>
@@ -47,6 +48,8 @@ const CallsDetails = () => {
         })}
       </div>
     </div>
+  ) : (
+    <Blank />
   );
 };
 
